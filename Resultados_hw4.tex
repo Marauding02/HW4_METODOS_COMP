@@ -1,0 +1,139 @@
+\documentclass[twoside]{article}
+
+\usepackage{lipsum} % Package to generate dummy text throughout this template
+
+\usepackage[sc]{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\linespread{1.05} % Line spacing - Palatino needs more space between lines
+\usepackage{microtype} % Slightly tweak font spacing for aesthetics
+
+\usepackage[hmarginratio=1:1,top=32mm,columnsep=20pt]{geometry} % Document margins
+\usepackage{multicol} % Used for the two-column layout of the document
+\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats in tables or figures
+\usepackage{booktabs} % Horizontal rules in tables
+\usepackage{float} % Required for tables and figures in the multi-column environment - they need to be placed in specific locations with the [H] (e.g. \begin{table}[H])
+\usepackage{hyperref} % For hyperlinks in the PDF
+
+\usepackage{lettrine} % The lettrine is the first enlarged letter at the beginning of the text
+\usepackage{paralist} % Used for the compactitem environment which makes bullet points with less space between them
+\usepackage[utf8]{inputenc}
+
+\usepackage{abstract} % Allows abstract customization
+\renewcommand{\abstractnamefont}{\normalfont\bfseries} % Set the "Abstract" text to bold
+\renewcommand{\abstracttextfont}{\normalfont\small\itshape} % Set the abstract itself to small italic text
+
+\usepackage{titlesec} % Allows customization of titles
+\renewcommand\thesection{\Roman{section}} % Roman numerals for the sections
+\renewcommand\thesubsection{\Roman{subsection}} % Roman numerals for subsections
+\titleformat{\section}[block]{\large\scshape\centering}{\thesection.}{1em}{} % Change the look of the section titles
+\titleformat{\subsection}[block]{\large}{\thesubsection.}{1em}{} % Change the look of the section titles
+\usepackage[normalem]{ulem}
+
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage{fancyhdr} % Headers and footers
+\pagestyle{fancy} % All pages have headers and footers
+\fancyhead{} % Blank out the default header
+\fancyfoot{} % Blank out the default footer
+\fancyhead[C]{Abril 2017 $\bullet$ Universidad de los Andes $\bullet$   Métodos Computacionales} % Custom header text
+\fancyfoot[RO,LE]{\thepage} % Custom footer text
+\usepackage{textcomp}
+\usepackage{siunitx}
+
+
+%-------------------------------------------------
+%\usepackage{eso-pic}
+%\usepackage[demo]{graphicx}
+%\newcommand\AtPageUpperRight[1]{\AtPageUpperLeft{%
+   %\makebox[\paperwidth][r]{#1}}}
+   
+%\AddToShipoutPictureBG*{%
+ % \AtPageUpperRight{\raisebox{-\height}{\includegraphics[scale=0.5]{andes}}}}
+ 
+
+
+%---------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\title{\vspace{-15mm}\fontsize{20pt}{12pt}\selectfont\textbf{ Ecuaciones diferenciales parciales \\ Ecuación de difusión en 2 dimensiones \\ }} 
+
+\author{
+  Sebastián Del Río Navarro\\
+  \texttt{201417736}\\
+  }
+ 
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+\maketitle % Insert title
+\thispagestyle{fancy} % All pages have headers and footers
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE CONTENTS
+%----------------------------------------------------------------------------------------
+
+
+\section{Introducción}
+
+La ecuación de difusión de temperatura esta dada por: 
+
+\begin{equation}
+    \frac{\partial T(t,x,y)}{\partial t} = v \frac{\partial ^2 T(t,x,y)}{\partial ^2 x} + v \frac{\partial ^2 T(t,x,y)}{\partial ^2 y}
+\end{equation}
+
+Para el ejercicio de una placa cuadrada de 1m de lado, su coeficiente de difusión es $v$ = $10 ^{-4}$. Se resolvió para 3 diferentes tipos de condiciones de frontera. 
+
+1. Abiertas: Las condiciones iniciales son tales que toda la placa está a T = 50°C excepto por un pequeñp rectángulo de 20cm X 10cm que está a T = 100°C y está localizado a x = 20cm del lado izquierdo de la placa y centrado en y. 
+
+2. Periódicas: El mismo pequeño rectángulo tiene una fuente de calor que mantiene su temperatura constante a T = 100°C. 
+
+3. Fijas: T = 50°C. 
+
+Para resolver la ecuación fue necesario su discretización, con lo cual se obtuvo lo siguiente: 
+
+\begin{equation}
+    T_{i,j}^{k+1}  = \lambda \upsilon [T_{i+1,j} + T_{i-1,j} + T_{i,j+1} + T_{i,j-1} - 4 T_{i,j}^{k}] + T_{i,j}^{k} 
+\end{equation}
+
+
+
+
+%------------------------------------------------
+
+\section{Condiciones de Frontera Abiertas}
+
+En estas condiciones de frontera, la energía térmica puede ser transferida desde la placa a un entorno por medio de sus límites. 
+
+
+%------------------------------------------------
+
+\section{Condiciones de frontera Periódicas}
+
+En estas condiciones de frontera se asocian los estados de los puntos de las fronteras de los lados con los lados opuestos y las bases con las bases opuestas de la placa. 
+
+
+%------------------------------------------------
+
+\section{Condiciones de frontera Fijas}
+
+En estas condiciones de frontera, las fronteras de la placa se mantienen a una temperatura constante. 
+
+Grafica para el promedio de la temperatura en el tiempo 
+\includegraphics[scale=0.6]{FIJAS.png}
+\captionof{figure}{ Tomado de Clasificación de imágenes multiespectrales ASTER mediante funciones adaptativas.
+Quiron (2009)}
+
+%-----------------------------------------------
+
+\section{Referencias}
+
+
+
+
+\end{document}
